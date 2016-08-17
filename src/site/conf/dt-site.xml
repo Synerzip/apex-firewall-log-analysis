@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+
+    <property>
+        <name>dt.operator.TweetSampler.consumerKey</name>
+        <value>6ABkcAQ0v9A7Xh2nkXtTmktTe</value>
+    </property>
+
+    <property>
+        <name>dt.operator.TweetSampler.consumerSecret</name>
+        <value>0kYu6Ia0N4mBVXo2dBqTsUn1AKprhhyeuWdgyfkU21qk2R4dOk</value>
+    </property>
+
+    <property>
+        <name>dt.operator.TweetSampler.accessToken</name>
+        <value>154062149-jmQLHa9xkIvfOvS3hioWMGerj1JUN2MOagKNOUW7</value>
+    </property>
+
+    <property>
+        <name>dt.operator.TweetSampler.accessTokenSecret</name>
+        <value>elTVfcDhqDduvdat1Qubfo7i6dTRSCpFPFL2JYeSxRjOk</value>
+    </property>
+</configuration>

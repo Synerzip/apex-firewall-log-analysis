@@ -22,7 +22,7 @@ public class ApplicationTest {
         lma.prepareDAG(new KafkaApplicationOne(), conf);
         LocalMode.Controller lc = lma.getController();
 
-        lc.run(120000);
+        lc.run(3600*1000);
     }
 
 }

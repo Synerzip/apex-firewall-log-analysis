@@ -35,7 +35,7 @@ public class MessageProcessor extends BaseOperator {
         @Override
         public void process(byte[] tuple) {
             try {
-                if (tuple != null) {
+                if (tuple != null ) {
                     Map<String, Object> logs = new HashMap<String, Object>();
                     FireLog fire = new FireLog();
                     String message = null;
@@ -44,7 +44,7 @@ public class MessageProcessor extends BaseOperator {
                     } catch (UnsupportedEncodingException e) {
                         e.printStackTrace();
                     }
-                    if (message.contains("sent_bytes") && message.contains("rcvd_bytes")) {
+                    if (message.contains("sent_bytes") && message.contains("rcvd_bytes") && message.contains("1AFF-0024")) {
 
                         matcher = keyValuePattern.matcher(message);
                         Map<String, String> keyValueMap = new HashMap<String, String>();

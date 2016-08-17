@@ -4,14 +4,10 @@ import com.datatorrent.api.Context;
 import com.datatorrent.api.DefaultInputPort;
 import com.datatorrent.api.DefaultOutputPort;
 import com.datatorrent.common.util.BaseOperator;
-import org.elasticsearch.action.index.IndexRequestBuilder;
-import org.joda.time.DateTime;
-import scala.Tuple2;
 
 import javax.validation.constraints.Min;
 import java.util.*;
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -70,8 +66,8 @@ public class Aggregator extends BaseOperator {
         collect.entrySet()
                 .forEach(m -> {
                     Tuple value = m.getValue();
-                    Long rcvdBytes = value.rcvdBytes;
-                    Long sentBytes = value.sentBytes;
+                    Double rcvdBytes = value.rcvdBytes / Math.pow(2, 20);
+                    Double sentBytes = value.sentBytes / Math.pow(2, 20);
                     Long time = value.time;
                     log.put("bu", m.getKey());
                     log.put("rcvdBytes", rcvdBytes);

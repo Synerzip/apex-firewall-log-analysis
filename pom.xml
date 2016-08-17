@@ -22,6 +22,102 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.4.3</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+
+                            <artifactSet>
+                                <excludes>
+                                    <exclude>org.apache.apex:malhar-library:jar:</exclude>
+                                    <exclude>org.eclipse.jetty:jetty-servlet:jar:</exclude>
+                                    <exclude>org.eclipse.jetty:jetty-security:jar:</exclude>
+                                    <exclude>org.eclipse.jetty:jetty-server:jar:</exclude>
+                                    <exclude>org.eclipse.jetty:jetty-continuation:jar:</exclude>
+                                    <exclude>com.sun.mail:javax.mail:jar:</exclude>
+                                    <exclude>javax.activation:activation:jar:</exclude>
+                                    <exclude>com.sun.jersey:jersey-client:jar:</exclude>
+                                    <exclude>javax.jms:jms-api:jar:</exclude>
+                                    <exclude>org.apache.activemq:activemq-client:jar:</exclude>
+                                    <exclude>org.apache.geronimo.specs:geronimo-jms_1.1_spec:jar:</exclude>
+                                    <exclude>org.fusesource.hawtbuf:hawtbuf:jar:1.9</exclude>
+                                    <exclude>org.apache.geronimo.specs:geronimo-j2ee-management_1.1_spec:jar:</exclude>
+                                    <exclude>org.slf4j:slf4j-api:jar:</exclude>
+                                    <exclude>com.github.tony19:named-regexp:jar:</exclude>
+                                    <exclude>org.apache.commons:commons-lang3:jar:</exclude>
+                                    <exclude>org.codehaus.janino:commons-compiler:jar:</exclude>
+                                    <exclude>org.eclipse.jetty:jetty-websocket:jar:</exclude>
+                                    <exclude>org.eclipse.jetty:jetty-util:jar:</exclude>
+                                    <exclude>org.eclipse.jetty:jetty-io:jar:</exclude>
+                                    <exclude>org.eclipse.jetty:jetty-http:jar:</exclude>
+                                    <exclude>commons-beanutils:commons-beanutils:jar:</exclude>
+                                    <exclude>commons-logging:commons-logging:jar:</exclude>
+                                    <exclude>joda-time:joda-time:jar:</exclude>
+                                    <exclude>it.unimi.dsi:fastutil:jar:</exclude>
+                                    <exclude>org.apache.apex:apex-shaded-ning19:jar:</exclude>
+                                    <exclude>org.apache.apex:malhar-contrib:jar:</exclude>
+                                    <exclude>org.apache.apex:malhar-kafka:jar:</exclude>
+                                    <exclude>org.apache.kafka:kafka-clients:jar:</exclude>
+                                    <exclude>net.jpountz.lz4:lz4:jar:</exclude>
+                                    <exclude>org.elasticsearch:elasticsearch:jar:</exclude>
+                                    <exclude>org.apache.lucene:lucene-core:jar:</exclude>
+                                    <exclude>org.apache.lucene:lucene-backward-codecs:jar:</exclude>
+                                    <exclude>org.apache.lucene:lucene-analyzers-common:jar:</exclude>
+                                    <exclude>org.apache.lucene:lucene-queries:jar:</exclude>
+                                    <exclude>org.apache.lucene:lucene-memory:jar:</exclude>
+                                    <exclude>org.apache.lucene:lucene-highlighter:jar:</exclude>
+                                    <exclude>org.apache.lucene:lucene-queryparser:jar:</exclude>
+                                    <exclude>org.apache.lucene:lucene-sandbox:jar:</exclude>
+                                    <exclude>org.apache.lucene:lucene-suggest:jar:</exclude>
+                                    <exclude>org.apache.lucene:lucene-misc:jar:</exclude>
+                                    <exclude>org.apache.lucene:lucene-join:jar:</exclude>
+                                    <exclude>org.apache.lucene:lucene-grouping:jar:</exclude>
+                                    <exclude>org.apache.lucene:lucene-spatial:jar:</exclude>
+                                    <exclude>org.apache.lucene:lucene-spatial3d:jar:</exclude>
+                                    <exclude>com.spatial4j:spatial4j:jar:</exclude>
+                                    <exclude>org.elasticsearch:securesm:jar:</exclude>
+                                    <exclude>com.carrotsearch:hppc:jar:</exclude>
+                                    <exclude>org.joda:joda-convert:jar:</exclude>
+                                    <exclude>com.fasterxml.jackson.core:jackson-core:jar:</exclude>
+                                    <exclude>com.fasterxml.jackson.dataformat:jackson-dataformat-smile:jar:</exclude>
+                                    <exclude>com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:jar:</exclude>
+                                    <exclude>org.yaml:snakeyaml:jar:</exclude>
+                                    <exclude>com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:jar:</exclude>
+                                    <exclude>io.netty:netty:jar:</exclude>
+                                    <exclude>com.ning:compress-lzf:jar:</exclude>
+                                    <exclude>com.tdunning:t-digest:jar:</exclude>
+                                    <exclude>org.hdrhistogram:HdrHistogram:jar:</exclude>
+                                    <exclude>commons-cli:commons-cli:jar:</exclude>
+                                    <exclude>com.twitter:jsr166e:jar:</exclude>
+                                    <exclude>org.apache.kafka:kafka_2.10:jar:</exclude>
+                                    <exclude>com.yammer.metrics:metrics-core:jar:</exclude>
+                                    <exclude>org.xerial.snappy:snappy-java:jar:</exclude>
+                                    <exclude>net.sf.jopt-simple:jopt-simple:jar:</exclude>
+                                    <exclude>org.scala-lang:scala-library:jar:</exclude>
+                                    <exclude>com.101tec:zkclient:jar:</exclude>
+                                    <exclude>com.sun.jersey:jersey-core:jar:</exclude>
+                                </excludes>
+                            </artifactSet>
+                            <filters>
+                                <filter>
+                                    <artifact>com.google.guava:guava</artifact>
+                                    <includes>
+                                        <include>com/google/common/**</include>
+
+                                    </includes>
+                                </filter>
+                            </filters>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-eclipse-plugin</artifactId>
                 <version>2.9</version>
                 <configuration>
@@ -233,6 +329,41 @@
 
         </plugins>
 
+        <pluginManagement>
+        	<plugins>
+        		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+        		<plugin>
+        			<groupId>org.eclipse.m2e</groupId>
+        			<artifactId>lifecycle-mapping</artifactId>
+        			<version>1.0.0</version>
+        			<configuration>
+        				<lifecycleMappingMetadata>
+        					<pluginExecutions>
+        						<pluginExecution>
+        							<pluginExecutionFilter>
+        								<groupId>
+        									org.apache.maven.plugins
+        								</groupId>
+        								<artifactId>
+        									maven-javadoc-plugin
+        								</artifactId>
+        								<versionRange>
+        									[2.10.3,)
+        								</versionRange>
+        								<goals>
+        									<goal>javadoc</goal>
+        								</goals>
+        							</pluginExecutionFilter>
+        							<action>
+        								<ignore></ignore>
+        							</action>
+        						</pluginExecution>
+        					</pluginExecutions>
+        				</lifecycleMappingMetadata>
+        			</configuration>
+        		</plugin>
+        	</plugins>
+        </pluginManagement>
     </build>
 
     <dependencies>
@@ -261,12 +392,6 @@
             <version>3.5.0-SNAPSHOT</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.datastax.cassandra</groupId>
-            <artifactId>cassandra-driver-core</artifactId>
-            <version>2.1.8</version>
-            <optional>true</optional>
-        </dependency>
         <dependency>
             <groupId>org.apache.apex</groupId>
             <artifactId>malhar-kafka</artifactId>
@@ -303,22 +428,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <!-- required by twitter demo -->
-            <groupId>org.twitter4j</groupId>
-            <artifactId>twitter4j-core</artifactId>
-            <version>3.0.5</version>
-        </dependency>
-        <dependency>
-            <!-- required by twitter demo -->
-            <groupId>org.twitter4j</groupId>
-            <artifactId>twitter4j-stream</artifactId>
-            <version>3.0.5</version>
-        </dependency>
+
         <dependency>
             <groupId>org.apache.apex</groupId>
             <artifactId>apex-common</artifactId>
-            <version>${apex.version}</version>
+            <version>3.4.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -330,14 +444,14 @@
         <dependency>
             <groupId>org.apache.apex</groupId>
             <artifactId>apex-engine</artifactId>
-            <version>${apex.version}</version>
+            <version>3.4.0</version>
             <scope>test</scope>
         </dependency>
         <!-- http://mvnrepository.com/artifact/com.google.guava/guava -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>19.0</version>
+            <version>18.0</version>
         </dependency>
 
     </dependencies>
