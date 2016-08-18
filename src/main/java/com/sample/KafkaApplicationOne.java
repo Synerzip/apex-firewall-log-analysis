@@ -34,11 +34,9 @@ public class KafkaApplicationOne implements StreamingApplication{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         output.setIdField("uuid");
         output.setIndexName("agg");
         output.setType("log");
-
         dag.addStream("toElastic",agg.output,output.input);
     }
     ElasticSearchConnectable createStore() throws IOException {
